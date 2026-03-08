@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CUSTOS — Guardian Intelligence</title>
+  <link rel="stylesheet" href="trainer.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <!-- ── HEADER ─────────────────────────────── -->
+  <header class="header">
+    <div class="logo-group">
+      <div class="logo-ring">
+        <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Outer dashed ring -->
+          <circle cx="26" cy="26" r="23"
+            stroke="#00e5ff" stroke-width="1"
+            stroke-dasharray="4 3" opacity="0.5"/>
+          <!-- Inner solid ring -->
+          <circle cx="26" cy="26" r="18"
+            stroke="#00e5ff" stroke-width="1.5" opacity="0.3"/>
+          <!-- Tick marks -->
+          <line x1="26" y1="3" x2="26" y2="7" stroke="#00e5ff" stroke-width="2"/>
+          <line x1="26" y1="45" x2="26" y2="49" stroke="#00e5ff" stroke-width="2"/>
+          <line x1="3" y1="26" x2="7" y2="26" stroke="#00e5ff" stroke-width="2"/>
+          <line x1="45" y1="26" x2="49" y2="26" stroke="#00e5ff" stroke-width="2"/>
+        </svg>
+        <div class="logo-c">C</div>
+      </div>
+      <div class="brand-text">
+        <h1>CUSTOS</h1>
+        <div class="tagline">Dataset & Model Trainer</div>
+      </div>
+    </div>
+    <div class="sys-status">
+      <div class="sys-dot"></div>
+      SYSTEM ONLINE
+    </div>
+  </header>
+
+  <!-- ── MODE SELECTOR ──────────────────────── -->
+  <div class="mode-bar">
+    <button class="mode-btn active" data-mode="webcam">
+      <span class="mode-icon"></span>WEBCAM
+    </button>
+    <button class="mode-btn" data-mode="images">
+      <span class="mode-icon"></span>IMAGES
+    </button>
+    <button class="mode-btn" data-mode="videos">
+      <span class="mode-icon"></span>VIDEOS
+    </button>
+    <button class="mode-btn" data-mode="gifs">
+      <span class="mode-icon"></span>GIFs
+    </button>
+    <button class="mode-btn" data-mode="all">
+      <span class="mode-icon"></span>ALL TYPES
+    </button>
+  </div>
+
+  <!-- ── STEPS ──────────────────────────────── -->
+  <div class="steps">
+    <div class="step"><div class="step-num">01</div><div class="step-label">Choose Mode</div></div>
+    <div class="step"><div class="step-num">02</div><div class="step-label">Collect Data</div></div>
+    <div class="step"><div class="step-num">03</div><div class="step-label">Train Model</div></div>
+    <div class="step"><div class="step-num">04</div><div class="step-label">Export</div></div>
+  </div>
+
+  <!-- ── CAMERA SECTION ─────────────────────── -->
+  <div class="camera-section" id="camera-section">
+    <div class="camera-frame">
+      <div class="corner-tr"></div>
+      <div class="corner-bl"></div>
+      <video id="video" autoplay playsinline></video>
+      <canvas id="canvas"></canvas>
+      <div id="rec-badge" class="rec-badge">● REC</div>
+      <div class="cam-hud" id="cam-hud">CUSTOS VISION v1.0 · FEED ACTIVE</div>
+    </div>
+  </div>
+
+  <!-- ── UPLOAD ZONE ─────────────────────────── -->
+  <div class="upload-zone" id="upload-zone">
+    <div class="upload-icon" id="upload-icon">📁</div>
+    <h3 id="upload-title">DROP FILES HERE</h3>
+    <p id="upload-desc">Drag & drop your files or browse to select</p>
+    <label class="upload-browse">
+      BROWSE FILES
+      <input type="file" id="file-input" multiple hidden>
+    </label>
+  </div>
+
+  <!-- ── FILE QUEUE ──────────────────────────── -->
+  <div class="file-queue" id="file-queue">
+    <div class="file-queue-header">
+      <div class="file-queue-title">📋 FILE QUEUE — <span id="queue-count">0</span> files</div>
+      <button class="util-btn danger" id="btn-clear-queue">CLEAR QUEUE</button>
+    </div>
+    <div class="queue-list" id="queue-list"></div>
+  </div>
+
+  <!-- ── COLLECT PANEL ───────────────────────── -->
+  <div class="panel" id="collect-panel">
+    <div class="panel-title">COLLECT SAMPLES</div>
+
+    <!-- Custom class name inputs -->
+    <div class="class-labels">
+      <div class="label-field">
+        <label>Class A Label</label>
+        <input type="text" id="label-a" value="fall" placeholder="e.g. fall">
+      </div>
+      <div class="label-field">
+        <label>Class B Label</label>
+        <input type="text" id="label-b" value="normal" placeholder="e.g. normal">
+      </div>
+    </div>
+
+    <!-- Webcam record buttons (shown only in webcam mode) -->
+    <div id="webcam-controls">
+      <div class="rec-row">
+        <button type="button" id="btn-rec-a" class="rec-btn">
+          ● Record Class A <span class="key-badge">1</span>
+        </button>
+        <button type="button" id="btn-rec-b" class="rec-btn">
+          ● Record Class B <span class="key-badge">2</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Upload process button (shown in upload modes) -->
+    <div id="upload-controls" style="display:none;">
+      <button type="button" id="btn-process-files" class="rec-btn" style="width:100%; margin-bottom:0.75rem;">
+        ⚙ PROCESS UPLOADED FILES
+      </button>
+      <div class="proc-log" id="proc-log"></div>
+    </div>
+
+    <!-- Sample counts -->
+    <div class="sample-counts">
+      <div class="count-item">
+        <div class="count-dot"></div>
+        <span id="label-a-display">FALL</span>:&nbsp;<span class="count-val" id="count-a">0</span>
+      </div>
+      <div class="count-item">
+        <div class="count-dot b"></div>
+        <span id="label-b-display">NORMAL</span>:&nbsp;<span class="count-val b" id="count-b">0</span>
+      </div>
+    </div>
+
+    <!-- Dataset stats -->
+    <div class="stats-grid">
+      <div class="stat-cell"><div class="stat-val" id="stat-total">0</div><div class="stat-key">Total Frames</div></div>
+      <div class="stat-cell"><div class="stat-val" id="stat-files">0</div><div class="stat-key">Files Loaded</div></div>
+      <div class="stat-cell"><div class="stat-val" id="stat-ratio">—</div><div class="stat-key">A:B Ratio</div></div>
+    </div>
+  </div>
+
+  <!-- ── TRAIN PANEL ─────────────────────────── -->
+  <div class="panel">
+    <div class="panel-title">TRAIN & TEST</div>
+
+    <div class="conf-wrap">
+      <div class="conf-track"><div class="conf-fill" id="conf-fill"></div></div>
+      <div class="conf-readout" id="conf-readout">0%</div>
+    </div>
+    <div class="conf-label-text" id="conf-prediction">Awaiting model — train first</div>
+
+    <div class="progress-wrap" id="progress-wrap">
+      <div class="progress-label" id="progress-label">TRAINING — EPOCH 0 / 50</div>
+      <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+    </div>
+
+    <button type="button" id="btn-train" class="train-btn">INITIALIZE TRAINING</button>
+    <p class="status-line" id="train-status">Collect at least 20 samples per class, then train.</p>
+  </div>
+
+  <!-- ── DATA & MODEL PANEL ──────────────────── -->
+  <div class="panel">
+    <div class="panel-title">DATA & MODEL</div>
+    <div class="util-row">
+      <button type="button" id="btn-export-json" class="util-btn">Export JSON</button>
+      <button type="button" id="btn-export-csv" class="util-btn">Export CSV</button>
+      <button type="button" id="btn-import-data" class="util-btn">Import Data</button>
+      <button type="button" id="btn-save-model" class="util-btn">Save Model</button>
+      <button type="button" id="btn-clear-data" class="util-btn danger">Clear All</button>
+    </div>
+    <input type="file" id="import-data-input" accept=".json" hidden>
+  </div>
+
+  <!-- ── FOOTER ─────────────────────────────── -->
+  <footer class="footer">
+    <span class="author">Varunthej Parimi</span>
+    &nbsp;·&nbsp;
+    <span class="org">My Dataset & Model Trainer</span>
+  </footer>
+
+</div><!-- end page-wrap -->
+
+<!-- TensorFlow.js -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+<!-- MediaPipe -->
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/holistic/holistic.js"></script>
+<!-- Main script -->
+<script src="trainer.js"></script>
+</body>
+</html>
