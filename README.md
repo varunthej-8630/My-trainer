@@ -1,187 +1,186 @@
-# CUSTOS — Guardian Intelligence Systems
-### Multi-Purpose AI Training Tool
-**By Varunthej Parimi**
+MY_TRAINER
 
----
+Custom Dataset & Model Builder for CUSTOS
 
-## 📁 Project Files
+Developed by Varunthej Parimi
 
-```
-CUSTOS/
-├── trainer.html     → Main webpage (structure)
-├── trainer.css      → Design & styling
-├── trainer.js       → All logic, AI, data processing
-└── README.md        → This file
-```
+PROJECT OVERVIEW
 
----
+<img width="1905" height="1017" alt="image" src="https://github.com/user-attachments/assets/631d84fb-bb2b-44de-b08f-d1ad55b8e08e" />
 
-## 🚀 How to Run in VS Code (with commands)
+<img width="1917" height="1024" alt="image" src="https://github.com/user-attachments/assets/43efc746-e09e-48ae-9b4e-4a3ed2c750d5" />
 
-### Step 1 — Install Node.js
-Download from: https://nodejs.org  
-(Choose the LTS version)
+<img width="1916" height="1021" alt="image" src="https://github.com/user-attachments/assets/19eabb38-2791-4127-8923-6bfbb072816e" />
 
-Verify installation:
-```bash
+<img width="1912" height="1000" alt="image" src="https://github.com/user-attachments/assets/659b97ee-b316-4c05-b130-de82a4e4eeaf" />
+
+<img width="1917" height="1019" alt="image" src="https://github.com/user-attachments/assets/0fb912b5-f17e-464a-a966-496b4298f79d" />
+
+<img width="1919" height="1010" alt="image" src="https://github.com/user-attachments/assets/5c17b5ae-03b1-4103-b1b6-6cff4c650759" />
+
+
+MY_TRAINER is a browser-based tool built to simplify the process of creating custom datasets and training machine learning models.
+
+The tool was designed specifically to support the development of the CUSTOS Guardian Intelligence System by allowing fast experimentation with AI training data.
+
+Instead of manually collecting and preparing datasets using multiple tools, MY_TRAINER provides a single interface to:
+
+• Collect training samples
+• Label data
+• Generate structured datasets
+• Train neural network models
+• Export trained models for integration
+
+This allows faster iteration while developing AI features for CUSTOS.
+
+PROJECT STRUCTURE
+
+MY_TRAINER/
+
+trainer.html
+Main user interface and layout
+
+trainer.css
+Visual design and styling
+
+trainer.js
+Core logic for dataset collection and training
+
+README.md
+Project documentation
+
+CORE CAPABILITIES
+
+Dataset Creation
+
+The system allows collecting structured training samples directly from multiple media sources.
+
+Supported inputs include:
+
+Webcam capture
+Image uploads
+Video files
+Animated GIF sequences
+
+Each collected sample can be labeled and stored as part of a dataset.
+
+Model Training
+
+The tool allows training a neural network directly inside the browser using TensorFlow.js.
+
+The training pipeline includes:
+
+Feature extraction
+Data labeling
+Dataset preparation
+Neural network training
+Real-time testing
+
+This enables quick experimentation without needing a backend server.
+
+Model Export
+
+After training, the system can export multiple files:
+
+dataset.json
+Complete dataset with labels and metadata
+
+dataset.csv
+Structured dataset that can be opened in Excel or other analysis tools
+
+model.json
+Neural network architecture
+
+model.weights.bin
+Trained model weights
+
+These exported models can later be integrated into the CUSTOS AI system.
+
+TECHNOLOGY STACK
+
+HTML
+
+Defines the structure of the application interface including panels, controls, and display components.
+
+CSS
+
+Handles layout, styling, animations, and visual feedback across the application.
+
+JavaScript
+
+Implements the core logic including data processing, user interactions, model training, and export functions.
+
+TensorFlow.js
+
+Provides the machine learning framework used to train neural networks directly inside the browser.
+
+MediaPipe
+
+Used for extracting pose and hand landmark features from visual inputs which serve as training data for the neural network.
+
+HOW TO RUN THE PROJECT
+
+Step 1 — Install Node.js
+
+Download and install the LTS version from
+
+https://nodejs.org
+
+Verify installation
+
 node --version
 npm --version
-```
 
----
+Step 2 — Install live-server
 
-### Step 2 — Install live-server globally
-Open VS Code Terminal (Ctrl + ` or View → Terminal) and run:
+Open the VS Code terminal and run
 
-```bash
 npm install -g live-server
-```
 
----
+Step 3 — Navigate to the project folder
 
-### Step 3 — Navigate to your project folder
+Example
 
-```bash
-cd path/to/CUSTOS
-```
+cd D:\my_trainer
 
-Example on Windows:
-```bash
-cd C:\Users\YourName\Desktop\CUSTOS
-```
+Step 4 — Start the local server
 
-Example on Mac/Linux:
-```bash
-cd ~/Desktop/CUSTOS
-```
-
----
-
-### Step 4 — Start the server
-
-```bash
 live-server --open=trainer.html
-```
 
-This will:
-✅ Start a local server at http://127.0.0.1:8080  
-✅ Auto-open trainer.html in your browser  
-✅ Auto-refresh when you save any file  
+This will start a development server and automatically open the application in your browser.
 
----
+Example server address
 
-### Alternative — Python server (if you have Python)
+http://127.0.0.1:8080
 
-```bash
+Alternative method using Python
+
 python -m http.server 8080
-```
-Then open: http://localhost:8080/trainer.html
 
----
+Then open
 
-### ⚠️ Why you CANNOT just double-click the HTML file?
-Because the browser blocks camera access and JavaScript modules  
-on `file://` protocol. You MUST run it through a local server.
+http://localhost:8080/trainer.html
 
----
+WHY A LOCAL SERVER IS REQUIRED
 
-## 🌐 Languages Used & Why
+Modern browsers restrict camera access and certain JavaScript features when running files directly using file://.
 
-### 1. HTML (trainer.html)
-**What it is:** HyperText Markup Language  
-**Why we used it:** It's the skeleton of the webpage. Every button,  
-panel, input field, and canvas element is defined in HTML.  
-**How:** We structured sections for header, mode selector, camera  
-preview, upload zone, collect panel, train panel, and export panel.
+Running the project through a local server enables:
 
----
+Camera permissions
+JavaScript modules
+External libraries
 
-### 2. CSS (trainer.css)
-**What it is:** Cascading Style Sheets  
-**Why we used it:** It handles all visual design — colors, animations,  
-layout, fonts, the grid background, scanlines, glow effects, etc.  
-**How:** We used CSS variables for the color palette, @keyframes  
-for animations (spinning ring, pulsing dot, scrolling grid),  
-and flexbox/grid for responsive layout.
+ROLE IN THE CUSTOS ECOSYSTEM
 
-**Key design features built in CSS:**
-- Scrolling grid background
-- Horizontal scanline overlay
-- Spinning CUSTOS ring logo
-- Glowing cyan panel borders
-- Crosshair cursor throughout
-- Corner bracket frames on camera
+MY_TRAINER acts as a development utility within the CUSTOS AI ecosystem.
 
----
+Its purpose is to accelerate AI experimentation by allowing quick dataset generation and model training.
 
-### 3. JavaScript (trainer.js)
-**What it is:** The programming language of the web  
-**Why we used it:** All the logic — capturing webcam, processing  
-files, running AI, training the model, exporting data — runs in JS.  
-**How:** We used modern async/await for file processing, the  
-Web File API for uploads, Canvas API for frame extraction,  
-and event listeners for all user interactions.
+The trained models can later be integrated into different CUSTOS components such as behavior detection systems, gesture recognition, and intelligent monitoring modules.
 
----
+AUTHOR
 
-### 4. TensorFlow.js (loaded via CDN)
-**What it is:** Google's machine learning library for JavaScript  
-**Why we used it:** To build, train, and run the neural network  
-directly in the browser — no server or Python needed.  
-**How:** We create a sequential neural network with dense layers,  
-compile it with Adam optimizer, train it on your collected samples,  
-and run live inference on the webcam feed.
+Varunthej Parimi
 
----
-
-### 5. MediaPipe Holistic (loaded via CDN)
-**What it is:** Google's pose/hand/face landmark detection library  
-**Why we used it:** To extract hand skeleton coordinates (21 points  
-× 3D × 2 hands = 126 numbers) from the webcam feed.  
-**How:** We initialize the Holistic model, pass each video frame  
-through it, and get back normalized landmark coordinates  
-which we use as input features for our neural network.
-
----
-
-## 🎯 Modes Explained
-
-| Mode     | Input              | Best For                          |
-|----------|--------------------|-----------------------------------|
-| WEBCAM   | Live camera        | Real-time gesture/pose recording  |
-| IMAGES   | JPG/PNG/WEBP files | Photo-based fall detection        |
-| VIDEOS   | MP4/AVI/WEBM files | Video clip training data          |
-| GIFs     | GIF animations     | Animated sequence training        |
-| ALL      | Any media file     | Mixed dataset training            |
-
----
-
-## 📊 Output Files
-
-| File                     | Format | Contents                        |
-|--------------------------|--------|---------------------------------|
-| custos-dataset.json      | JSON   | All samples + metadata + labels |
-| custos-dataset.csv       | CSV    | Feature vectors, importable to Excel |
-| custos-model.json        | JSON   | Trained neural network architecture |
-| custos-model.weights.bin | Binary | Model weights                   |
-
-The CSV file can be opened directly in Microsoft Excel or Google Sheets.
-
----
-
-## 🛠 Troubleshooting
-
-**Camera not working?**
-→ Make sure you're running via live-server, not file://
-→ Allow camera permission when browser asks
-
-**MediaPipe not loading?**
-→ Check your internet connection (CDN libraries need internet)
-
-**Training stuck?**
-→ Need at least 5 samples per class before training
-
----
-
-*CUSTOS — Guardian Intelligence Systems*  
-*By Varunthej Parimi*
+Developer of the CUSTOS Guardian Intelligence System
